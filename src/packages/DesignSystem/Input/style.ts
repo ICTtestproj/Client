@@ -25,11 +25,11 @@ export const SInput = styled.div<{ isAct: boolean }>`
       padding: 0 2px 6px 2px;
     }
     > button {
-      width: 58px;
+      width: 70px;
       height: 23px;
       display: inline-block;
       background-color: #b2b2b2;
-      font-size: 9px;
+      font-size: 8.5px;
       color: white;
       margin-left: 10px;
     }
