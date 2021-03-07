@@ -1,9 +1,9 @@
 import React from 'react';
 import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 
-import GlobalStyle from './styles/GlobalStyle';
+import GlobalStyle from './packages/styles/GlobalStyle';
 import {
-  Main
+  Authentication
 } from './pages';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <HashRouter>
       <GlobalStyle />
       <Switch>
-        <Route exact path='/' component={Main} />
+        <Route exact path='/' component={Authentication.SignIn} />
       </Switch>
     </HashRouter>
   );
