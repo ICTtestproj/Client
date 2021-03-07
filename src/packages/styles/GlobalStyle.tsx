@@ -1,7 +1,7 @@
 import {
   createGlobalStyle,
   GlobalStyleComponent,
-  DefaultTheme,
+  DefaultTheme
 } from "styled-components";
 
 const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
@@ -69,10 +69,16 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
       user-select: none;
     }
 
-    body >div {
-      display: flex;
-      justify-content: center;
+    #root >div {
+      /* display: flex;
+      flex-direction: column;
+      align-items: flex-start; */
+      width: 100%;
       height: 100vh;
+    }
+
+    .colorful {
+      background-image: linear-gradient(205deg, #8f34c5 , #616bd3);
     }
   `;
 

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FAQList = styled.div`
   margin-top: 50px;
 `;
 
 export const FAQListItem = styled.li`
-  width: 370px;
+  /* width: 370px; */
   height: 40px;
   padding: 12px 239px 11px 15px;
   opacity: 0.25;

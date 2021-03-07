@@ -37,7 +37,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-renderer": "cross-env BROWSER=none npm run start",
-    "start-main": "electron .",
+    "electron": "electron .",
     "compile-main": "tsc ./public/electron.ts",
     "start-main-after-renderer": "wait-on http://localhost:3000 && npm run start-main",
     "dev": "concurrently -n renderer, main 'npm:start-renderer' 'npm:start-main-after-renderer'",

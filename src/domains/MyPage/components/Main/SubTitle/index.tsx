@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 
-import {Text} from './style';
+import { Text } from "./style";
 
-const SubTitle: React.FC = () => {
-    return <Text>나의 스크랩</Text>
+const SubTitle: React.FC = ({ children }) => {
+  return <Text>{children}</Text>;
 };
 
 export default SubTitle;
