@@ -4,7 +4,6 @@ export const MyInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 40px;
 `;
 
 export const SubText = styled.p`

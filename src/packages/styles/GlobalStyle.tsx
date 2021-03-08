@@ -75,11 +75,14 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
       align-items: flex-start; */
       width: 100%;
       height: 100vh;
+      box-sizing: border-box;
     }
 
     .colorful {
       background-image: linear-gradient(205deg, #8f34c5 , #616bd3);
+      padding: 20px 40px;
     }
+
   `;
 
 export default GlobalStyle;

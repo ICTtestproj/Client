@@ -13,15 +13,32 @@ export const SButton = styled.button`
   &.btn_move-page {
     width: 75px;
     height: 32px;
-    opacity: 0.22;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,0.22);
+    font-weight: 300;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >img {
+      width: 12px;
+      height: 12px;
+
+      &.next{
+        margin-right: 5px;
+      }
+      &.prev{
+        margin-left: 5px;
+      }
+    }
   }
   &.btn_setting {
     width: 50px;
     height: 20px;
-    opacity: 0.22;
+    background-color: rgba(255, 255, 255, 0.22);
     border-radius: 8px;
-    background-color: #ffffff;
+    color: white;
+    font-size: 10px;
   }
 `;

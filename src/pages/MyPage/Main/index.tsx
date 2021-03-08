@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import {
+  BtnToChat,
   FAQContainer,
   KeywordsContainer,
   MyInfo,
@@ -10,8 +11,9 @@ import {
 const Main: React.FC = () => {
   return (
     <div className="colorful">
-      <MyInfo></MyInfo>
-      <KeywordsContainer></KeywordsContainer>
+      <BtnToChat />
+      <MyInfo />
+      <KeywordsContainer />
       <FAQContainer></FAQContainer>
       <ScrapContainer></ScrapContainer>
     </div>

@@ -6,8 +6,8 @@ export const KeywordsListContainer = styled.div`
 
 export const KeywordList = styled.ul`
   width: 100%;
-  height: 40px;
   overflow-x: auto;
+  white-space:nowrap;
   overflow-y: hidden;
 `;
 
