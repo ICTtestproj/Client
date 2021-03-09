@@ -3,7 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import GlobalStyle from "./packages/styles/GlobalStyle";
 import { Authentication } from "./pages";
-import Main from "./pages/MyPage/Scrap";
+import Main from "./pages/MyPage/ScrapDetail";
 
 function App() {
   return (

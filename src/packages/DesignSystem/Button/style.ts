@@ -26,10 +26,10 @@ export const SButton = styled.button`
       height: 12px;
 
       &.next{
-        margin-right: 5px;
+        margin-left: 5px;
       }
       &.prev{
-        margin-left: 5px;
+        margin-right: 5px;
       }
     }
   }

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-export const Title = styled.h1`
-  font-size: 28px;
-  color: white;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+export const ListContainer = styled.ul`
+  width: 100%;
+  height: 550px;
+  overflow-y: auto;
+  margin-top: 50px;
 `;
 
 export const ListItem = styled.li`
-  width: 370px;
+  width: 100%;
   height: 50px;
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.25);
@@ -16,6 +17,8 @@ export const ListItem = styled.li`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 
   > p {
     color: white;
