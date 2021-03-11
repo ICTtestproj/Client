@@ -13,6 +13,10 @@ const SignInContent: React.FC = () => {
 
   }, []);
 
+  const handleClickLoginButton = React.useCallback(() => {
+    window.location.hash = '#/mypage';
+  }, []);
+
   return (
     <SignInContentContainer>
       <Input isAct={false}>
@@ -28,7 +32,7 @@ const SignInContent: React.FC = () => {
         </div>
       </Input>
 
-      <Button className="btn_completion">로그인</Button>
+      <Button className="btn_completion" onClick={handleClickLoginButton}>로그인</Button>
     </SignInContentContainer>
   );
 };

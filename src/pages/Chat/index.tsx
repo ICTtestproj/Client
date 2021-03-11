@@ -8,6 +8,10 @@ import React, {
 import Input from "../../packages/DesignSystem/Input";
 
 const Main = () => {
+  React.useEffect(() => {
+    window.location.hash = "#/signin"
+  }, [])
+
   const [name, setName] = useState<string>("");
 
   const handleChangeName = useCallback((e: ChangeEvent<HTMLInputElement>) => {
