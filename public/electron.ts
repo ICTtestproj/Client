@@ -4,7 +4,7 @@ import * as url from "url";
 import { app, BrowserWindow } from "electron";
 import * as isDev from "electron-is-dev";
 
-const baseUrl: string = "http://localhost:3000";
+const baseUrl: string = "http://localhost:1212";
 
 let mainWindow: BrowserWindow | null;
 
@@ -19,7 +19,7 @@ function createMainWindow(): void {
   });
 
   const mainWindowUrl: string = url.format({
-    pathname: path.join(__dirname, "../build/index.html"),
+    pathname: path.join(__dirname, ".index.html"),
     protocol: "file"
   });
 
