@@ -10,6 +10,7 @@ function App() {
     <HashRouter>
       <GlobalStyle />
       <Switch>
+      <Route exact path='/signin' component={Chatting.Chat} />
         <Route exact path='/signin' component={Authentication.SignIn} />
         <Route exact path='/signup' component={Authentication.SignUp}/>
         <Route exact path='/' component={Authentication.SignIn}/>
