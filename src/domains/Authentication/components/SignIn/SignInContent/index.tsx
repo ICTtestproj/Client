@@ -3,18 +3,20 @@ import * as React from "react";
 import { Input, Button } from "../../../../../packages/DesignSystem";
 import { SignInContentContainer } from "./style";
 import { signIn } from "../../../remotes/SignInAPI";
+import {GlobalContext} from '../../../../../packages/contexts/GlobalContext';
 
 const SignInContent: React.FC = () => {
-  const [email, setEmail] = React.useState<string>("");
+  const [account, setAccount] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  const [isEmailSelected, setIsEmailSelected] = React.useState<boolean>(false);
+  const [isAccountSelected, setIsAccountSelected] = React.useState<boolean>(false);
   const [isPasswordSelected, setIsPasswordSelected] = React.useState<boolean>(
     false
   );
+  const {setAccessToken, accessToken} = React.useContext(GlobalContext);
 
   const handleChangeEmail = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setEmail(e.target.value);
+      setAccount(e.target.value);
     },
     []
   );
@@ -29,7 +31,7 @@ const SignInContent: React.FC = () => {
     (e: React.FocusEvent<HTMLInputElement>) => {
       switch (e.target.id) {
         case "input_email":
-          setIsEmailSelected(true);
+          setIsAccountSelected(true);
           break;
         case "input_password":
           setIsPasswordSelected(true);
@@ -45,7 +47,7 @@ const SignInContent: React.FC = () => {
     (e: React.FocusEvent<HTMLInputElement>) => {
       switch (e.target.id) {
         case "input_email":
-          setIsEmailSelected(false);
+          setIsAccountSelected(false);
           break;
         case "input_password":
           setIsPasswordSelected(false);
@@ -57,25 +59,27 @@ const SignInContent: React.FC = () => {
     []
   );
 
-  const handleClickLoginButton = React.useCallback(() => {
-    //    window.location.hash = "#/mypage";
-    const response = signIn({
-      email,
+  const handleClickLoginButton = React.useCallback(async () => {
+    const response = await signIn({
+      account,
       password
     });
 
-    console.log(response);
-  }, [email, password]);
+    setAccessToken(response.access_token);
+    console.log(accessToken);
+
+    window.location.hash ='#/';
+  }, [account, password, setAccessToken]);
 
   return (
     <SignInContentContainer>
-      <Input isAct={isEmailSelected}>
+      <Input isAct={isAccountSelected}>
         <label htmlFor="input_email">이메일</label>
         <div>
           <input
             type="text"
             id="input_email"
-            value={email}
+            value={account}
             onFocus={e => handleFocusInInput(e)}
             onBlur={e => handleFocusOutInput(e)}
             onChange={e => handleChangeEmail(e)}

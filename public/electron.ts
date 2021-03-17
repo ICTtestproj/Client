@@ -4,7 +4,7 @@ import * as url from "url";
 import { app, BrowserWindow } from "electron";
 import * as isDev from "electron-is-dev";
 
-const baseUrl: string = "http://localhost:1212";
+const baseUrl: string = "http://localhost:3000";
 
 let mainWindow: BrowserWindow | null;
 

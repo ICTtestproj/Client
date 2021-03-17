@@ -1,18 +1,15 @@
 import { instance } from "../../../packages/modules/axios";
 
-interface Params {
-  email: string;
-  password: string;
-}
-
-interface Payload {
-  access_token: string;
-}
+import {convertToFormData} from '../../../utils';
+import {SignInParams, SignInPayload} from '../models';
 
 const url = "/login";
 
-export const signIn = async (params: Params) => {
-  const { data } = await instance.post<Payload>(url, params);
+export const signIn = async (params: SignInParams) => {
+
+  const formData = convertToFormData(params);
+  
+  const { data } = await instance.post<SignInPayload>(url, formData);
 
   return data;
 };

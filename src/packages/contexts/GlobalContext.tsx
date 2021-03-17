@@ -2,12 +2,12 @@ import * as React from "react";
 
 interface State {
   accessToken: string;
-  handleAccessToken: (accessToken: string) => void;
+  setAccessToken: (accessToken: string) => void;
 }
 
 const initialState: State = {
   accessToken: "",
-  handleAccessToken: () => {}
+  setAccessToken: () => {}
 };
 
 export const GlobalContext = React.createContext<State>(initialState);
@@ -15,7 +15,7 @@ export const GlobalContext = React.createContext<State>(initialState);
 const GlobalContextProvider: React.FC = ({ children }) => {
   const [access_token, setAccess_token] = React.useState<string>("");
 
-  const handleAccessToken = React.useCallback(newAccessToken => {
+  const setAccessToken = React.useCallback(newAccessToken => {
     setAccess_token(newAccessToken);
   }, []);
 
@@ -23,7 +23,7 @@ const GlobalContextProvider: React.FC = ({ children }) => {
     <GlobalContext.Provider
       value={{
         accessToken: access_token,
-        handleAccessToken
+        setAccessToken
       }}
     >
       {children}
