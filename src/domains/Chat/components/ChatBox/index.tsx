@@ -1,24 +1,49 @@
 import * as React from "react";
 
-import Star from "../../../assets/star.png";
+import Star from "../../../../assets/star.png";
 import { ChatBoxContainer, ScrapBtn } from "./style";
 
-const ChatBox = () => {
+const ChatBox = (props : any) => {
   const [isHover, setIsHover] = React.useState<boolean>(false);
   const handleMouseOver = React.useCallback(() => {
-    setIsHover(true);
+    if(!props.question) 
+      setIsHover(true);
   }, []);
   const handleMouseOut = React.useCallback(() => {
     setIsHover(false);
   }, []);
 
+  const content = props.content;
+  let style;
+  if(props.question) {
+    style = {
+      marginLeft: '0px',
+      marginRight: '30px',
+      alignItems: "flex-end"
+    }
+  } else {
+    style = {
+      marginLeft: '30px',
+      marginRight: '0px',
+      alignItems: "flex-start"
+    }
+  }
+
   return (
     <ChatBoxContainer
       onMouseEnter={handleMouseOver}
       onMouseLeave={handleMouseOut}
+      style={style}
     >
       <div>
-        <pre>IP 주소 어떻게 보나요?</pre>
+        <pre>{content[0]}</pre>
+        {
+          content[1] == null ? <div> </div> :
+          <div>
+            <div className ="inbox">{content[1]}</div>
+            <div className ="inbox">{content[2]}</div>
+          </div>
+        }
       </div>
       <ScrapBtn isHover={isHover}>
         <p>스크랩</p>
