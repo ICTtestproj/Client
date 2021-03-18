@@ -70,11 +70,11 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     }
 
     #root >div {
-      /* display: flex;
+      display: flex;
       flex-direction: column;
-      align-items: flex-start; */
+      /* align-items: flex-start; */
       width: 100%;
-      /* height: 100vh; */
+      height: 100vh;
       box-sizing: border-box;
     }
 

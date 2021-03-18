@@ -15,6 +15,7 @@ const ChatBox = (props : any) => {
 
   const content = props.content;
   let style;
+
   if(props.question) {
     style = {
       marginLeft: '0px',
@@ -29,6 +30,12 @@ const ChatBox = (props : any) => {
     }
   }
 
+  const anotherQuestion = () => {
+    const other = content[1];
+    props.parentFunction(other); 
+    console.log(other);
+  }
+
   return (
     <ChatBoxContainer
       onMouseEnter={handleMouseOver}
@@ -40,7 +47,7 @@ const ChatBox = (props : any) => {
         {
           content[1] == null ? <div> </div> :
           <div>
-            <div className ="inbox">{content[1]}</div>
+            <div className ="inbox" onClick={anotherQuestion}>{content[1]}</div>
             <div className ="inbox">{content[2]}</div>
           </div>
         }
