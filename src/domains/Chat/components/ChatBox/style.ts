@@ -30,6 +30,9 @@ export const ChatBoxContainer = styled.div`
     backdrop-filter: blur(30px);
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     background: rgba(255, 255, 255, 0.22);
+    &:last-child {
+    margin-bottom: 80px;
+  }
   }
 
   pre {
