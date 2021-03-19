@@ -16,7 +16,6 @@ const BtnToMypage: React.FC = () => {
             </>
         </Button>
     </div>
-  );
 };
 
 export default BtnToMypage;

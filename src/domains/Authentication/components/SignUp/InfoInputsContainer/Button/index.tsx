@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Button as SButton } from "../../../../../packages/DesignSystem";
+import { Button as SButton } from "../../../../../../packages/DesignSystem";
 import { ButtonContainer } from "./style";
 
 const Button: React.FC = () => {

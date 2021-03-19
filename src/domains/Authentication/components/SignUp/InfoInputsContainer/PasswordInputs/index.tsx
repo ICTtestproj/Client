@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Input } from "../../../../../packages/DesignSystem";
+import { Input } from "../../../../../../packages/DesignSystem";
 import { InputsContainer } from "./style";
 
 const PasswordInputs: React.FC = () => {

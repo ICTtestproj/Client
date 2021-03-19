@@ -26,6 +26,7 @@ function createMainWindow() {
   mainWindow.on("closed", function() {
     mainWindow = null;
   });
+  mainWindow.setMenuBarVisibility(false);
 }
 electron_1.app.on("ready", function() {
   createMainWindow();

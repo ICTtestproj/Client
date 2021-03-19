@@ -14,6 +14,7 @@ import { BackgroundContainer, ChatContainer } from "../../domains/Chat/component
 import ChatBox from "../../domains/Chat/components/ChatBox";
 import ChatInput from "../../domains/Chat/components/ChatInput";
 import {BtnToMypage} from '../../domains/MyPage/components/ScrapList';
+import checkAccessToken from '../../utils/checkAccessToken';
 
 interface ChattingListItem {
   content: string[];
@@ -21,6 +22,11 @@ interface ChattingListItem {
 }
 
 const Chat: React.FC = () => {
+  const {accessToken} = React.useContext(GlobalContext);
+
+  React.useEffect(() => {
+    checkAccessToken(accessToken);
+  }, []);
 
   // const [token, setToken] = useState({
   //   access_token: '',

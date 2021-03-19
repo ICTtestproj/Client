@@ -1,13 +1,7 @@
 import Title from "./Title";
-import AuthenticationInputs from "./AuthenticationInputs";
-import Button from "./Button";
-import PasswordInputs from "./PasswordInputs";
-import PersonalInfoInputs from "./PersonalInfoInputs";
+import InfoInputsContainer from './InfoInputsContainer';
 
 export {
   Title,
-  AuthenticationInputs,
-  Button,
-  PasswordInputs,
-  PersonalInfoInputs,
+  InfoInputsContainer
 };

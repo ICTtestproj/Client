@@ -6,7 +6,7 @@ import Next from '../../../../../assets/next.png';
 
 const BtnToChat: React.FC = () => {
     const handleMoveToMain = React.useCallback(() => {
-        window.location.hash= '/chat';
+        window.location.hash= '#/';
     }, []);
 
     return <MoveBtnContainer>
