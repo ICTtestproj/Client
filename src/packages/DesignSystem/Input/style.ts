@@ -36,6 +36,7 @@ export const SInput = styled.div<{ isAct: boolean }>`
     }
   }
   > p {
+    height: 13px;
     font-size: 12px;
     color: #717df7;
     margin-top: 6px;

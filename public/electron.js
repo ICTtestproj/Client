@@ -4,7 +4,7 @@ var path = require("path");
 var url = require("url");
 var electron_1 = require("electron");
 var isDev = require("electron-is-dev");
-var baseUrl = "http://localhost:3000";
+var baseUrl = "http://localhost:1212";
 var mainWindow;
 function createMainWindow() {
   mainWindow = new electron_1.BrowserWindow({

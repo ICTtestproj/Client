@@ -1,31 +1,55 @@
-import * as React from 'react';
+import * as React from "react";
 
-import {Button} from '../../../../../packages/DesignSystem';
-import Title from '../SubTitle';
-import {ScrapList, ScrapListContainer, ScrapListItem, TitleContainer} from './style';
+import { getMyScrap } from "../../../remotes";
+import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
 
-const ScrapContainer: React.FC = () => {
-    const handleClickScrapBtn = React.useCallback(() => {
-        window.location.hash = ('#/mypage/scrap')
-    }, []);
+import { Button } from "../../../../../packages/DesignSystem";
+import Title from "../SubTitle";
+import {
+  ScrapList,
+  ScrapListContainer,
+  ScrapListItem,
+  TitleContainer
+} from "./style";
 
-    return <ScrapListContainer>
-        <TitleContainer>
-            <Title>나의 스크랩</Title>
-            <Button className="btn_setting" onClick={handleClickScrapBtn}>전체보기</Button>
-        </TitleContainer>
-        <ScrapList>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-            <ScrapListItem></ScrapListItem>
-        </ScrapList>
-    </ScrapListContainer>
+interface ScrapItem {
+  question: string;
+  answer: string;
 }
 
-export default ScrapContainer
+const ScrapContainer: React.FC = () => {
+  const [scrapList, setScrapList] = React.useState<ScrapItem[]>([]);
+  const { accessToken } = React.useContext(GlobalContext);
+
+  React.useEffect(() => {
+    const getLastAskList = async () => {
+      const response = await getMyScrap({ accessToken });
+
+      setScrapList(response.result);
+    };
+
+    getLastAskList();
+  }, []);
+
+  const handleClickScrapBtn = React.useCallback(() => {
+    window.location.hash = "#/mypage/scrap";
+  }, []);
+
+  return (
+    <ScrapListContainer>
+      <TitleContainer>
+        <Title>나의 스크랩</Title>
+        <Button className="btn_setting" onClick={handleClickScrapBtn}>
+          전체보기
+        </Button>
+      </TitleContainer>
+      <ScrapList>
+        {scrapList.map(i => (
+          <ScrapListItem>{i.answer}</ScrapListItem>
+        ))}
+      </ScrapList>
+    </ScrapListContainer>
+  );
+};
+
+export default ScrapContainer;

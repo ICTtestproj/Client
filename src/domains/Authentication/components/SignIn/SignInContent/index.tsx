@@ -3,16 +3,24 @@ import * as React from "react";
 import { Input, Button } from "../../../../../packages/DesignSystem";
 import { SignInContentContainer } from "./style";
 import { signIn } from "../../../remotes/SignInAPI";
-import {GlobalContext} from '../../../../../packages/contexts/GlobalContext';
+import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
 
 const SignInContent: React.FC = () => {
   const [account, setAccount] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  const [isAccountSelected, setIsAccountSelected] = React.useState<boolean>(false);
+  const [isAccountSelected, setIsAccountSelected] = React.useState<boolean>(
+    false
+  );
   const [isPasswordSelected, setIsPasswordSelected] = React.useState<boolean>(
     false
   );
-  const {setAccessToken, accessToken} = React.useContext(GlobalContext);
+  const [inputState, setInputState] = React.useState<string>(" ");
+  const { setAccessToken, accessToken } = React.useContext(GlobalContext);
+
+  enum InputsState {
+    existNull = "정보를 모두 입력하세요.",
+    signinFailure = "이메일 또는 비밀번호가 틀렸습니다."
+  }
 
   const handleChangeEmail = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,15 +68,25 @@ const SignInContent: React.FC = () => {
   );
 
   const handleClickLoginButton = React.useCallback(async () => {
-    const response = await signIn({
-      account,
-      password
-    });
+    if (account && password) {
+      setInputState(" ");
 
-    setAccessToken(response.access_token);
-    console.log(accessToken);
+      const response = await signIn({
+        account,
+        password
+      });
 
-    window.location.hash ='#/';
+      if (response.access_token) {
+        setAccessToken(response.access_token);
+        console.log(response.access_token);
+
+        window.location.hash = "#/";
+      } else {
+        setInputState(InputsState.signinFailure);
+      }
+    } else {
+      setInputState(InputsState.existNull);
+    }
   }, [account, password, setAccessToken]);
 
   return (
@@ -98,6 +116,7 @@ const SignInContent: React.FC = () => {
             onChange={e => handleChangePassword(e)}
           />
         </div>
+        <p>{inputState}</p>
       </Input>
 
       <Button className="btn_completion" onClick={handleClickLoginButton}>
