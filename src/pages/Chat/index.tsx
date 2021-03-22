@@ -12,29 +12,30 @@ import Background from "../../domains/Chat/components/Background"
 import { BackgroundContainer, ChatContainer } from "../../domains/Chat/components/Background/style";
 import ChatBox from "../../domains/Chat/components/ChatBox";
 import ChatInput from "../../domains/Chat/components/ChatInput";
-import {BtnToMypage} from '../../domains/MyPage/components/ScrapList';
+import { BtnToMypage } from '../../domains/MyPage/components/ScrapList';
+import Modal from '../../domains/Chat/components/Modal'
 
 interface ChattingListItem {
   content: string[];
   isQuestion: boolean;
+  index: number;
+}
+
+interface scrapItem {
+  index: number;
+  question: string;
+  answer: string;
 }
 
 const Main = () => {
-
-  // const [token, setToken] = useState({
-  //   access_token: '',
-  //   result: false
-  // });
-  
   const [answer, setAnswer] = useState<string[]>([]);
   const [error, setError] = useState(null);
   const [question, setQuestion] = useState('');
-  const [qqq, setQqq] = useState('');
-
-
   const [chatting, setChatting] = useState<ChattingListItem[]>([]);
+  const [scrap, setScrap] = useState<scrapItem[]>([]);
+  const [count, setCount] = useState(0);
 
-  async function getResponse(param : any) {
+  async function getResponse(param: any) {
     try {
       // console.log(param.replace(' ', '%20'));
       // const replaceChat = encodeURIComponent(param);
@@ -42,8 +43,8 @@ const Main = () => {
       console.log(replaceChat);
       setError(null);
       const response = await axios({
-        method:'get',
-        url:'http://137.135.116.71/chat',
+        method: 'get',
+        url: 'http://137.135.116.71/chat',
         params: {
           question: replaceChat
         },
@@ -55,14 +56,10 @@ const Main = () => {
 
       const resAnswer: string[] = [];
       console.log('질문 : ' + param);
-      if(response.data.id != -1) {
-      resAnswer.push(response.data.answer);
-      console.log('답변 : ' + response.data.answer);
-      } else {
-        resAnswer.push('무슨 말인지 잘 모르겠어요!')
-      }
-      
-      if(response.data.id != -1 && response.data.context.prompts[0] != null && response.data.context.prompts[0].displayText != null) {
+      if (response.data.id != -1) resAnswer.push(response.data.answer);
+      else resAnswer.push('무슨 말인지 잘 모르겠어요!');
+
+      if (response.data.id != -1 && response.data.context.prompts[0] != null && response.data.context.prompts[0].displayText != null) {
         resAnswer.push(response.data.context.prompts[0].displayText);
       }
 
@@ -71,62 +68,74 @@ const Main = () => {
 
       let ans = {
         content: resAnswer,
-        isQuestion: false
+        isQuestion: false,
+        index: count
       }
-      
+
       setChatting([...chatting, ans]);
 
+      let tempScrap = {
+        index: count,
+        question: param,
+        answer: resAnswer[0]
+      }
+
+      const scrapList = scrap;
+      scrapList.push(tempScrap);
+
+      setScrap(scrapList);
+      console.log(count);
+      setCount(count + 1);
     } catch (e) {
       setError(e);
     }
   }
 
-  const parentFunction = (chat : any) => {
-    // alert(chat);
-    
-    let Q = {
+  // 다른 질문을 해야할 때
+  const parentFunction = (chat: any) => {
+    let question = {
       content: [chat],
-      isQuestion: true
+      isQuestion: true,
+      index: count
     }
 
     setQuestion(chat);
-    const temp = chatting;
-    temp.push(Q);
-    setChatting(temp);
-
+    const tempChatting = chatting;
+    tempChatting.push(question);
+    setChatting(tempChatting);
     getResponse(chat);
-} 
-
-const otherQ = (other : any) => {
-  // alert(other);
-  
-  let Q = {
-    content: [other],
-    isQuestion: true
   }
 
-  setQuestion(other);
-  const temp = chatting;
-  temp.push(Q);
-  setChatting(temp);
+  const anotherQuestion = (other: any) => {
+    let question = {
+      content: [other],
+      isQuestion: true,
+      index: count
+    }
 
-  getResponse(other);
-} 
+    setQuestion(other);
+    const tempChatting = chatting;
+    tempChatting.push(question);
+    setChatting(tempChatting);
+    getResponse(other);
+  }
 
   return (
     <BackgroundContainer>
-      <div style={{marginLeft: '30px'}}>
-        <BtnToMypage/>
+      <div style={{ marginLeft: '30px' }}>
+        <BtnToMypage />
       </div>
+      {/* <Modal></Modal> */}
       <ChatContainer>
-        <div style={{paddingBottom: '80px', boxSizing: 'border-box'}}>
+        <div style={{ paddingBottom: '80px', boxSizing: 'border-box' }}>
           {
-          chatting.map((chat) => 
-            <div>
-              <ChatBox content={chat.content} question={chat.isQuestion} parentFunction={otherQ}></ChatBox>
-            </div>
-          )
-        }
+            chatting.map((chat) =>
+              <div>
+                <ChatBox content={chat.content} question={chat.isQuestion}
+                  parentFunction={anotherQuestion} item={scrap} keyIndex={chat.index}></ChatBox>
+              </div>
+            )
+          }
         </div>
         <ChatInput parentFunction={parentFunction}></ChatInput>
       </ChatContainer>
