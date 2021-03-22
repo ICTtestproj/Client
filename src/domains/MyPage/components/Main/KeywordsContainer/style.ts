@@ -6,6 +6,7 @@ export const KeywordsListContainer = styled.div`
 
 export const KeywordList = styled.ul`
   width: 100%;
+  height: 45px;
   overflow-x: auto;
   white-space:nowrap;
   overflow-y: hidden;
@@ -35,4 +36,11 @@ export const KeywordItem = styled.li`
   backdrop-filter: blur(30px);
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: rgba(255, 255, 255, 0.25);
+`;
+
+export const Notification = styled.li`
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 300;
 `;

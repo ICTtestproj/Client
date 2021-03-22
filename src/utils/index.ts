@@ -1,9 +1,11 @@
-export const convertToFormData= <T> (params: T): FormData => {
-    const formData = new FormData();
-    
-    for(const [key, value] of Object.entries(params)){
-        formData.append(key, value);
-    }
+import authorization from './authorization';
+import checkAccessToken from './checkAccessToken';
+import convertToFormData from './convertToFormData';
+import validateEmail from './validateEmail';
 
-    return formData;
+export {
+    authorization,
+    checkAccessToken,
+    convertToFormData,
+    validateEmail
 }

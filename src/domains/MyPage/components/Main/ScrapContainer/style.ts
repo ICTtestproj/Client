@@ -36,4 +36,29 @@ export const ScrapListItem = styled.div`
   backdrop-filter: blur(30px);
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  
+  >h3 {
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    white-space: normal;
+    height: 192px;
+  }
+`;
+
+export const Notification = styled.p`
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 300;
 `;

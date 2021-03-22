@@ -48,7 +48,6 @@ export const ChatBoxContainer = styled.div`
     border-radius: 5px;
     background-color: #f5f5f5;
     text-align: center;
-    font-family: AppleSDGothicNeo;
     font-size: 14px;
     font-weight: bold;
     font-stretch: normal;

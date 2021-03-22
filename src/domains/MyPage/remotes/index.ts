@@ -1,6 +1,6 @@
 import { instance } from "../../../packages/modules/axios";
 
-import { authorization } from "../../../utils/authorization";
+import { authorization } from "../../../utils";
 import {
   GetMyScrapParams,
   GetMyScrapPayload,
@@ -38,6 +38,8 @@ export const getLastAsk = async (params: GetLastAskParams) => {
 
     return data;
   } catch (e) {
+    console.log('getlastask error')
+    
     return {
       result: []
     };
@@ -55,6 +57,8 @@ export const getOftenAsked = async (params: GetOftenAskedParams) => {
 
     return data;
   } catch (e) {
+
+    console.log('oftenasked error')
     return {
       result: []
     };

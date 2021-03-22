@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { AuthenticationInputsProps } from "../../../../models/props";
 import { sendCode, checkCode, signUp } from "../../../../remotes/SignUpAPI";
+import {validateEmail} from '../../../../../../utils'
 
 import { Input } from "../../../../../../packages/DesignSystem";
 import { InputsContainer } from "./style";
@@ -43,10 +44,7 @@ const AuthenticationInputs: React.FC<AuthenticationInputsProps> = ({
   );
 
   const handleClickSendBtn = React.useCallback(async () => {
-    function validateEmail(email: string) {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    }
+    
     if (!email) {
       setEmailStatus(EmailStatus.empty);
     } else if (!validateEmail(email)) {

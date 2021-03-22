@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const FAQList = styled.div`
+export const FAQListContainer = styled.div`
   margin-top: 50px;
+`;
+
+export const FAQList = styled.ul`
+  height: 85px;
 `;
 
 export const FAQListItem = styled.li`
@@ -18,4 +22,11 @@ export const FAQListItem = styled.li`
   align-items: center;
   padding: 0 15px;
   margin-top: 15px;
+`;
+
+export const Notification = styled.li`
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 300;
 `;

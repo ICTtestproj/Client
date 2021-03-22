@@ -4,7 +4,7 @@ import { getLastAsk } from "../../../remotes";
 import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
 
 import SubTitle from "../SubTitle";
-import { KeywordsListContainer, KeywordList, KeywordItem } from "./style";
+import { KeywordsListContainer, KeywordList, KeywordItem, Notification } from "./style";
 
 const KeywordsContainer: React.FC = () => {
   const [lastAskList, setLastAskList] = React.useState<string[]>([]);
@@ -24,9 +24,9 @@ const KeywordsContainer: React.FC = () => {
     <KeywordsListContainer>
       <SubTitle>최근 검색어</SubTitle>
       <KeywordList className="keywords">
-        {lastAskList.map(i => (
+        {lastAskList.length > 0? lastAskList.map(i => (
           <KeywordItem>{i}</KeywordItem>
-        ))}
+        )) : <Notification>정보가 존재하지 않습니다.</Notification>}
       </KeywordList>
     </KeywordsListContainer>
   );
