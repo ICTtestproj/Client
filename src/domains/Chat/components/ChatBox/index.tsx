@@ -4,6 +4,7 @@ import Star from "../../../../assets/star.png";
 import { ChatBoxContainer, ScrapBtn } from "./style";
 import Modal from '../../../../domains/Chat/components/Modal'
 import axios from 'axios';
+import {convertToFormData} from '../../../../utils/index'
 
 const ChatBox = (props: any) => {
   const [isHover, setIsHover] = React.useState<boolean>(false);
@@ -68,6 +69,14 @@ const ChatBox = (props: any) => {
   async function registerScrap() {
     try {
       setError(null);
+
+      const data = {
+        question: props.item[sequence].question,
+        answer: props.item[sequence].answer
+      }
+
+      const formData = convertToFormData(data);
+
       const response = await axios({
         method: 'post',
         url: 'http://137.135.116.71/regscrap',
@@ -83,12 +92,13 @@ const ChatBox = (props: any) => {
           // 'Connection': 'keep-alive',
           'Content-Type': 'multipart/form-data;'
         },
-        data: {
+        data: formData
+        // {
           // question: props.item[sequence].question,
           // answer: props.item[sequence].answer
-          answer: 'bb',
-          question: 'aa'
-        }
+          // answer: 'bb',
+          // question: 'aa'
+        // }
       });
       console.log('질문 : ' + props.item[sequence].question + ', 답변 : ' + props.item[sequence].answer);
       console.log(response.data.result);

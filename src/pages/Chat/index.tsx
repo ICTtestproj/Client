@@ -35,6 +35,14 @@ const Main = () => {
   const [scrap, setScrap] = useState<scrapItem[]>([]);
   const [count, setCount] = useState(0);
 
+  // let introduce = {
+  //   content: ['안녕하세요.'],
+  //   isQuestion: false,
+  //   index: -1
+  // }
+
+  // setChatting([...chatting, introduce]);
+
   async function getResponse(param: any) {
     try {
       // console.log(param.replace(' ', '%20'));
@@ -127,7 +135,7 @@ const Main = () => {
       </div>
       {/* <Modal></Modal> */}
       <ChatContainer>
-        <div style={{ paddingBottom: '80px', boxSizing: 'border-box' }}>
+        <div style={{ paddingBottom: '80px', boxSizing: 'border-box'}}>
           {
             chatting.map((chat) =>
               <div>
