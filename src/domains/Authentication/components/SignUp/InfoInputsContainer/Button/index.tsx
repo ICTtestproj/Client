@@ -26,7 +26,7 @@ const Button: React.FC<SignUpButtonProps> = ({
 
       if (response.result) {
         //모달
-        window.location.hash = "#/signup";
+        window.location.hash = "#/signin";
       }
     } else {
       //모달
