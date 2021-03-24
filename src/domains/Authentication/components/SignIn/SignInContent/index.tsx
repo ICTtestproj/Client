@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { signIn } from "../../../remotes/SignInAPI";
-import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
-import {validateEmail} from '../../../../../utils';
+import { signIn } from "domains/Authentication/remotes/SignInAPI";
+import { GlobalContext } from "packages/contexts/GlobalContext";
+import {validateEmail} from 'utils';
 
-import { Input, Button } from "../../../../../packages/DesignSystem";
+import { Input, Button } from "packages/DesignSystem";
 import { SignInContentContainer } from "./style";
 
 const SignInContent: React.FC = () => {
@@ -113,7 +113,7 @@ const SignInContent: React.FC = () => {
         <label htmlFor="input_password">비밀번호</label>
         <div>
           <input
-            type="text"
+            type="password"
             id="input_password"
             value={password}
             onFocus={e => handleFocusInInput(e)}

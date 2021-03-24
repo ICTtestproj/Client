@@ -1,6 +1,6 @@
-import { instance } from "../../../packages/modules/axios";
+import { instance } from "packages/modules/axios";
 
-import { authorization } from "../../../utils";
+import { authorization } from "utils";
 import {
   GetMyScrapParams,
   GetMyScrapPayload,

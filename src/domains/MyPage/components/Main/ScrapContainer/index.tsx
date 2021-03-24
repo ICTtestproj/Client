@@ -1,10 +1,10 @@
 import * as React from "react";
 
 import { getMyScrap } from "../../../remotes";
-import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
-import { MypageContext } from '../../../../../packages/contexts/MypageContext';
+import { GlobalContext } from "packages/contexts/GlobalContext";
+import { MypageContext } from 'packages/contexts/MypageContext';
 
-import { Button } from "../../../../../packages/DesignSystem";
+import { Button } from "packages/DesignSystem";
 import Title from "../SubTitle";
 import {
   ScrapList,

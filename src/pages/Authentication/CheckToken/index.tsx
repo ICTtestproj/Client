@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {GlobalContext} from '../../../packages/contexts/GlobalContext';
+import {GlobalContext} from 'packages/contexts/GlobalContext';
 
 const CheckToken: React.FC = () => {
     const { accessToken } = React.useContext(GlobalContext);

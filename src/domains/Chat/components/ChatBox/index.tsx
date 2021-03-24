@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Star from "../../../../assets/star.png";
+import Star from "assets/star.png";
 import { ChatBoxContainer, ScrapBtn } from "./style";
 
 const ChatBox = (props : any) => {

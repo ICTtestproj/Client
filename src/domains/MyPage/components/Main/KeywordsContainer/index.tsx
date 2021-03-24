@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { getLastAsk } from "../../../remotes";
-import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
+import { getLastAsk } from "domains/MyPage/remotes";
+import { GlobalContext } from "packages/contexts/GlobalContext";
 
 import SubTitle from "../SubTitle";
 import { KeywordsListContainer, KeywordList, KeywordItem, Notification } from "./style";

@@ -1,14 +1,14 @@
-import React, { createContext, useContext } from "react";
+import React from "react";
 
-import { GlobalContext } from "../../packages/contexts/GlobalContext";
+import { GlobalContext } from "packages/contexts/GlobalContext";
 
-export const MyPageContext = createContext<{ username: string }>({
+export const MyPageContext = React.createContext<{ username: string }>({
   username: ""
 });
 
 const MyPage = () => {
-  const { username } = useContext(MyPageContext);
-  const { accessToken, handleAccessToken } = useContext(GlobalContext);
+  const { username } = React.useContext(MyPageContext);
+  const { accessToken, setAccessToken } = React.useContext(GlobalContext);
 
   return (
     <MyPageContext.Provider value={{ username: "" }}></MyPageContext.Provider>

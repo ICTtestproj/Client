@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { Button } from "../../../../../packages/DesignSystem";
-import Pre from "../../../../../assets/pre.png";
+import { Button } from "packages/DesignSystem";
+import Pre from "assets/pre.png";
 
 const BtnToMypage: React.FC = () => {
     const handleMoveToMypage = React.useCallback(() => {

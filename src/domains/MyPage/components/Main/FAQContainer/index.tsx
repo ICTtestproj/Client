@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { getOftenAsked } from "../../../remotes";
-import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
+import { getOftenAsked } from "domains/MyPage/remotes";
+import { GlobalContext } from "packages/contexts/GlobalContext";
 
 import SubTitle from "../SubTitle";
 import { FAQListContainer, FAQList, FAQListItem,Notification } from "./style";

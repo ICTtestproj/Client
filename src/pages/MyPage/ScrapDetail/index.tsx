@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {BtnToScrap, Title, Content} from '../../../domains/MyPage/components/ScrapDetail'
+import {BtnToScrap, Title, Content} from 'domains/MyPage/components/ScrapDetail'
 
 const ScrapDetail: React.FC = () => {
     return <div className="colorful">

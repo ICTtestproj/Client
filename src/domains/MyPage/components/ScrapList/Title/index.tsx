@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {Button} from '../../../../../packages/DesignSystem'
+import {Button} from 'packages/DesignSystem'
 import {TitleContainer, STitle} from './style';
 
 const Title: React.FC = () => {

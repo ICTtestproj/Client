@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { AuthenticationInputsProps } from "../../../../models/props";
-import { sendCode, checkCode, signUp } from "../../../../remotes/SignUpAPI";
-import {validateEmail} from '../../../../../../utils'
+import { AuthenticationInputsProps } from "domains/Authentication/models/props";
+import { sendCode, checkCode, signUp } from "domains/Authentication/remotes/SignUpAPI";
+import {validateEmail} from 'utils'
 
-import { Input } from "../../../../../../packages/DesignSystem";
+import { Input } from "packages/DesignSystem";
 import { InputsContainer } from "./style";
 
 const AuthenticationInputs: React.FC<AuthenticationInputsProps> = ({

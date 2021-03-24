@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import {Button} from '../../../../../packages/DesignSystem';
-import Prev from '../../../../../assets/pre.png';
+import {Button} from 'packages/DesignSystem';
+import Prev from 'assets/pre.png';
 
 const BtnToScrap: React.FC = () => {
     return <div>

@@ -1,6 +1,6 @@
-import { instance } from "../../../packages/modules/axios";
+import { instance } from "packages/modules/axios";
 
-import { convertToFormData } from "../../../utils";
+import { convertToFormData } from "utils";
 import {
   CheckAccountParams,
   CheckAccountPayload,

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import {MoveBtnContainer} from './style';
-import {Button} from '../../../../../packages/DesignSystem'
-import Next from '../../../../../assets/next.png';
+import {Button} from 'packages/DesignSystem'
+import Next from 'assets/next.png';
 
 const BtnToChat: React.FC = () => {
     const handleMoveToMain = React.useCallback(() => {

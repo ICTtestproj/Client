@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { ChatInputContainer } from "./style";
-import SendImg from "../../../../assets/paper-plane.png";
+import SendImg from "assets/paper-plane.png";
 
 const ChatInput = (props : any) => {
   const [question, setQuestion] = React.useState('');
