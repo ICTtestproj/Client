@@ -8,12 +8,14 @@ import React, {
 import axios from 'axios';
 
 import Input from "../../packages/DesignSystem/Input";
-import Background from "../../domains/Chat/components/Background"
+import {GlobalContext} from '../../packages/contexts/GlobalContext';
+import Background from "../../domains/Chat/components/Background";
 import { BackgroundContainer, ChatContainer } from "../../domains/Chat/components/Background/style";
 import ChatBox from "../../domains/Chat/components/ChatBox";
 import ChatInput from "../../domains/Chat/components/ChatInput";
-import { BtnToMypage } from '../../domains/MyPage/components/ScrapList';
-import Modal from '../../domains/Chat/components/Modal'
+import Modal from '../../domains/Chat/components/Modal';
+import {BtnToMypage} from '../../domains/MyPage/components/ScrapList';
+import checkAccessToken from '../../utils/checkAccessToken';
 
 interface ChattingListItem {
   content: string[];
@@ -27,28 +29,41 @@ interface scrapItem {
   answer: string;
 }
 
-const Main = () => {
+const Chat: React.FC = () => {
+  let introduce = {
+    content: ['안녕하세요. 저는 LEGO 챗봇입니다. 질문을 마음껏 입력해주세요.'],
+    isQuestion: false,
+    index: -1
+  }
+  const {accessToken} = React.useContext(GlobalContext);
   const [answer, setAnswer] = useState<string[]>([]);
   const [error, setError] = useState(null);
   const [question, setQuestion] = useState('');
-  const [chatting, setChatting] = useState<ChattingListItem[]>([]);
+  const [chatting, setChatting] = useState<ChattingListItem[]>([introduce]);
   const [scrap, setScrap] = useState<scrapItem[]>([]);
   const [count, setCount] = useState(0);
+  const [waiting, setWaiting] = useState(false);
 
-  // let introduce = {
-  //   content: ['안녕하세요.'],
-  //   isQuestion: false,
-  //   index: -1
-  // }
+  React.useEffect(() => {
+    checkAccessToken(accessToken);
+  }, []);
 
-  // setChatting([...chatting, introduce]);
-
+  // ----- 답변 받기 -----
   async function getResponse(param: any) {
+    let ans = {
+      content: ['...'],
+      isQuestion: false,
+      index: count
+    }
+    // scrollToBottom();
+    setChatting([...chatting, ans]);
+    setWaiting(true);
+    scrollToBottom();
+
     try {
       // console.log(param.replace(' ', '%20'));
       // const replaceChat = encodeURIComponent(param);
       const replaceChat = param;
-      console.log(replaceChat);
       setError(null);
       const response = await axios({
         method: 'get',
@@ -82,6 +97,9 @@ const Main = () => {
 
       setChatting([...chatting, ans]);
 
+      scrollToBottom();
+      setWaiting(false);
+
       let tempScrap = {
         index: count,
         question: param,
@@ -90,52 +108,71 @@ const Main = () => {
 
       const scrapList = scrap;
       scrapList.push(tempScrap);
-
       setScrap(scrapList);
       console.log(count);
       setCount(count + 1);
     } catch (e) {
       setError(e);
+      setWaiting(false);
     }
   }
 
-  // 다른 질문을 해야할 때
+  // ----- 질문하기 -----
   const parentFunction = (chat: any) => {
-    let question = {
-      content: [chat],
-      isQuestion: true,
-      index: count
-    }
+    console.log('웨이팅은 : ' + waiting);
+    if(!waiting) {
+      let question = {
+        content: [chat],
+        isQuestion: true,
+        index: count
+      }
 
-    setQuestion(chat);
-    const tempChatting = chatting;
-    tempChatting.push(question);
-    setChatting(tempChatting);
-    getResponse(chat);
+      setQuestion(chat);
+      const tempChatting = chatting;
+      tempChatting.push(question);
+      setChatting(tempChatting); // sync로 처리를 해봐라.
+      scrollToBottom();
+      getResponse(chat);
+    } else {
+      return(
+        <Modal></Modal>
+      )
+    }
   }
 
+  // ----- 버튼으로 질문하기 -----
   const anotherQuestion = (other: any) => {
-    let question = {
-      content: [other],
-      isQuestion: true,
-      index: count
-    }
+    console.log('웨이팅은 : ' + waiting);
+    if(!waiting) {
+      let question = {
+        content: [other],
+        isQuestion: true,
+        index: count
+      }
 
-    setQuestion(other);
-    const tempChatting = chatting;
-    tempChatting.push(question);
-    setChatting(tempChatting);
-    getResponse(other);
+      setQuestion(other);
+      const tempChatting = chatting;
+      tempChatting.push(question);
+      setChatting(tempChatting);
+      scrollToBottom();
+    } else alert('잠시만 기다려주세요!');
+    // getResponse(other);
+  }
+  
+  const scrollToBottom = () => {
+    console.log("~스 크 롤 바 이 동 합 니 다 ~");
+    var scroll = document.getElementById('scrollBar');
+    scroll?.scrollIntoView({behavior: "smooth", block: "end"});
+    // scroll?.scrollTo({top:99999, behavior:'smooth'});
   }
 
   return (
-    <BackgroundContainer>
+    <BackgroundContainer id="scrollB">
       <div style={{ marginLeft: '30px' }}>
         <BtnToMypage />
       </div>
-      {/* <Modal></Modal> */}
       <ChatContainer>
-        <div style={{ paddingBottom: '80px', boxSizing: 'border-box'}}>
+        <div id='scrollBar' style={{ paddingBottom: '80px', boxSizing: 'border-box'}}>
           {
             chatting.map((chat) =>
               <div>
@@ -151,4 +188,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Chat;

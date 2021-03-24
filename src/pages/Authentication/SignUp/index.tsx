@@ -1,23 +1,19 @@
 import * as React from "react";
 
 import {
-  AuthenticationInputs,
-  Button,
-  PasswordInputs,
-  PersonalInfoInputs,
-  Title,
+  InfoInputsContainer,
+  Title
 } from "../../../domains/Authentication/components/SignUp";
+import {useInputState} from '../../../packages/hooks';
 
 const SignUp: React.FC = () => {
   return (
     <div>
       <Title />
-      <PersonalInfoInputs />
-      <AuthenticationInputs />
-      <PasswordInputs />
-      <Button />
+      <InfoInputsContainer />
     </div>
   );
 };
 
 export default SignUp;
+ 

@@ -5,6 +5,16 @@ export const ListContainer = styled.ul`
   height: 550px;
   overflow-y: auto;
   margin-top: 50px;
+  padding-right: 5px;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar{
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255, 0.1);
+  } 
 `;
 
 export const ListItem = styled.li`

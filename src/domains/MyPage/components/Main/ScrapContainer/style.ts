@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ScrapListContainer = styled.div`
-    margin-top: 46px;
+    margin-top: 40px;
 `;    
 
 export const TitleContainer = styled.div`
@@ -14,6 +14,15 @@ export const ScrapList = styled.div`
     width: 100%;
     white-space: nowrap;
     overflow-x: auto;
+  padding-bottom: 5px;
+
+  &::-webkit-scrollbar{
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255, 0.1);
+  } 
 `;
 
 export const ScrapListItem = styled.div`

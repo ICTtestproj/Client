@@ -18,11 +18,12 @@ export const SInput = styled.div<{ isAct: boolean }>`
       color: #000000;
       font-size: 14px;
       display: inline-block;
-      ${({ isAct }) =>
+      /* ${({ isAct }) =>
         isAct
           ? "border-image: linear-gradient(225deg, #8f34c5, #616bd3); border-image-width: 0 0 0 1px;"
-          : "border-bottom: 1px solid #b2b2b2;"}
+          : "border-bottom: 1px solid #b2b2b2;"} */
       padding: 0 2px 6px 2px;
+      border-bottom: 1px solid #b2b2b2;
     }
     > button {
       width: 70px;
@@ -35,6 +36,7 @@ export const SInput = styled.div<{ isAct: boolean }>`
     }
   }
   > p {
+    height: 13px;
     font-size: 12px;
     color: #717df7;
     margin-top: 6px;

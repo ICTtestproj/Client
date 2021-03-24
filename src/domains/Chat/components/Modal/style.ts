@@ -1,86 +1,118 @@
 import styled from "styled-components";
 
-export const ModalBox = styled.div`
-  .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 99;
-      background-color: rgba(0, 0, 0, 0.6);
-  }
-  .modal button {
-      outline: none;
-      cursor: pointer;
-      border: 0;
-  }
-  .modal > section {
-      width: 90%;
-      max-width: 450px;
-      margin:0 auto;
-      border-radius: .3rem;
-      background-color: #fff;
-      /* 팝업이 열릴때 스르륵 열리는 효과 */
-      animation: modal-show .3s;
-      overflow: hidden;
-  }
-  .modal > section > header {
-      position: relative;
-      padding: 16px 64px 16px 16px;
-      background-color: #f1f1f1;
-      font-weight: 700;
-  }
-  .modal > section > header button {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 30px;
-      font-size: 21px;
-      font-weight: 700;
-      text-align: center;
-      color: #999;
-      background-color: transparent;
-  }
-  .modal > section > main {
-      padding: 16px;
-      border-bottom: 1px solid #dee2e6;
-      border-top: 1px solid #dee2e6;
-  }
-  .modal > section > footer {
-      padding: 12px 16px;
-      text-align: right;
-  }
-  .modal > section > footer button {
-      padding: 6px 12px;
-      color: #fff;
-      background-color: #6c757d;
-      border-radius: 5px;
-      font-size: 13px;
-  }
-  .modal.openModal {
-      display: flex;
-      align-items: center;
-      /* 팝업이 열릴때 스르륵 열리는 효과 */
-      animation: modal-bg-show .3s;
-  }
-  @keyframes modal-show {
-      from {
-          opacity: 0;
-          margin-top: -50px;
-      }
-      to {
-          opacity: 1;
-          margin-top: 0;
-      }
-  }
-  @keyframes modal-bg-show {
-      from {
-          opacity: 0;
-      }
-      to {
-          opacity: 1;
-      }
+const Container = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6);
+`;
+
+const Contents = styled.div`
+  position: relative;
+  width: 370px;
+  height: 138px;
+  margin: 16px 0 0 10px;
+  padding: 8px 0 25px;
+  opacity: 0.75;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  color: #c0b1cd;
+`;
+
+const Array = styled.div`
+    display:flex; 
+    align-items: flex-end;
+`;
+
+const Title = styled.div`
+    width: 101px;
+    height: 31px;
+    margin: 7px 134px 12px 135px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-family: NanumSquare_acB;
+    font-size: 28px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.11;
+    letter-spacing: normal;
+    text-align: left;
+    color: #62536e;
+`;
+
+const Line = styled.div`
+    width: 50px;
+    height: 2px;
+    margin: 5px 160px 0 160px;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-image: linear-gradient(87deg, #717df7 20%, #a73de6 83%);
+`;
+
+const Button = styled.div`
+  width: 85px;
+  height: 20px;
+  margin: 15px 20px 15px 0px;
+  padding: 12px 15px 11px 10px;
+  opacity: 0.55;
+  border-radius: 10px;
+  text-align: center;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  font-family: NanumSquare_acB;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #c0acd1;
+  color: #231c2b;
+  cursor: pointer;
+`;
+
+const Close = styled.div`
+  position: absolute;
+  margin-right: 15px;
+  color: gray;
+  right: 0;
+
+  &:hover {
+    cursor: pointer;
   }
 `;
+
+const Body = styled.div`
+    width: 265px;
+    height: 20px;
+    margin: 16px 67px 70px 68px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-family: NanumSquare_acB;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.11;
+    letter-spacing: normal;
+    text-align: left;
+    color: #231c2b;
+`;
+
+export { Container, Contents, Overlay, Title, Close, Body, Line, Button, Array };

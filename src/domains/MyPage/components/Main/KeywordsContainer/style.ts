@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const KeywordsListContainer = styled.div`
-  margin-top: 60px;
+  margin-top: 35px;
 `;
 
 export const KeywordList = styled.ul`
@@ -9,6 +9,15 @@ export const KeywordList = styled.ul`
   overflow-x: auto;
   white-space:nowrap;
   overflow-y: hidden;
+  padding-bottom: 5px;
+
+  &::-webkit-scrollbar{
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255, 0.1);
+  }
 `;
 
 export const KeywordItem = styled.li`

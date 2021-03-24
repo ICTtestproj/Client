@@ -19,7 +19,7 @@ function createMainWindow(): void {
   });
 
   const mainWindowUrl: string = url.format({
-    pathname: path.join(__dirname, "../build/index.html"),
+    pathname: path.join(__dirname, ".index.html"),
     protocol: "file"
   });
 

@@ -5,7 +5,7 @@ export const FAQList = styled.div`
 `;
 
 export const FAQListItem = styled.li`
-  height: 40px;
+  height: 35px;
   border-radius: 15px;
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);

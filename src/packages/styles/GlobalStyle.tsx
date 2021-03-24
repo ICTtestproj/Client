@@ -76,6 +76,7 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
       width: 100%;
       height: 100vh;
       box-sizing: border-box;
+      overflow-y: hidden;
     }
 
     .colorful {
