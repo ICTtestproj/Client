@@ -4,7 +4,7 @@ import {
   InfoInputsContainer,
   Title
 } from "domains/Authentication/components/SignUp";
-import {useInputState} from '../../../packages/hooks';
+import {useInputState} from 'packages/hooks';
 
 const SignUp: React.FC = () => {
   return (

@@ -61,4 +61,5 @@ export const Notification = styled.p`
   color: #ffffff;
   font-size: 15px;
   font-weight: 300;
+  margin-top: 15px;
 `;

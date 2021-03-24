@@ -43,4 +43,5 @@ export const Notification = styled.li`
   color: #ffffff;
   font-size: 15px;
   font-weight: 300;
+  margin-top: 15px;
 `;

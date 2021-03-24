@@ -2,9 +2,9 @@ import * as React from "react";
 
 import Star from "assets/star.png";
 import { ChatBoxContainer, ScrapBtn } from "./style";
-import Modal from '../../../../domains/Chat/components/Modal';
+import Modal from 'domains/Chat/components/Modal';
 import axios from 'axios';
-import {convertToFormData} from '../../../../utils/index';
+import {convertToFormData} from 'utils/index';
 import { ChatContainer } from "../Background/style";
 
 const ChatBox = (props: any) => {

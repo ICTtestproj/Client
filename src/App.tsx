@@ -18,7 +18,7 @@ function App() {
           <MypageContextProvider>
           <Route exact path="/mypage" component={Mypage.MypageMain} />
           <Route exact path="/mypage/scrap" component={Mypage.ScrapList} />
-          {/* <Route exact path='/mypage/scrap' component={Mypage.ScrapDetail} /> */}
+          <Route path='/mypage/scrap/:id' component={Mypage.ScrapDetail} />
           </MypageContextProvider>
           <Authentication.CheckToken />
         </GlobalContextProvider>

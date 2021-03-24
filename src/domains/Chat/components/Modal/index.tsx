@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Container, Contents, Overlay, Title, Close, Body, Line, Button, Array } from "./style";
-import { TitleContainer } from "../../../../domains/Authentication/components/SignIn/Title/style"
-import STitle from "../../../../packages/DesignSystem/Title"
+import { TitleContainer } from "domains/Authentication/components/SignIn/Title/style"
+import STitle from "packages/DesignSystem/Title"
 import { setConstantValue } from "typescript";
-import {convertToFormData} from '../../../../utils/index';
+import {convertToFormData} from 'utils/index';
 import axios from 'axios';
 
 

@@ -4,9 +4,9 @@ import {BtnToMypage, Title, ScrapListContainer} from 'domains/MyPage/components/
 
 const Scrap: React.FC = () => {
     return <div className="colorful">
-        <BtnToMypage></BtnToMypage>
+        <BtnToMypage />
         <Title />
-        <ScrapListContainer></ScrapListContainer>
+        <ScrapListContainer />
     </div>
 }
 
