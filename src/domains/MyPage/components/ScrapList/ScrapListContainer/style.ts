@@ -39,5 +39,6 @@ export const ListItem = styled.li`
   > img {
     width: 12px;
     height: 12px;
+    cursor: pointer;
   }
 `;

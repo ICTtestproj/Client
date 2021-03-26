@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const ModalContainer = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
@@ -16,9 +16,9 @@ const Container = styled.div`
 
 const Overlay = styled.div`
   position: absolute;
-  width: 120%;
-  height: 120%;
-  background-color: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
 `;
 
 const Contents = styled.div`
@@ -112,4 +112,4 @@ const Body = styled.div`
     color: #231c2b;
 `;
 
-export { Container, Contents, Overlay, Title, Close, Body, Line, Button, Array };
+export { ModalContainer, Contents, Overlay, Title, Close, Body, Line, Button, Array };

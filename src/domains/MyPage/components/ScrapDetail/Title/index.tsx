@@ -1,11 +1,20 @@
 import * as React from 'react';
+import {withRouter,RouteComponentProps} from 'react-router-dom';
+
+import {MypageContext} from 'packages/contexts/MypageContext';
 
 import {STitle, TitleContainer, BtnContainer} from './style';
-import {Button} from 'packages/DesignSystem'
+import {Button} from 'packages/DesignSystem';
 
-const Title: React.FC = ( ) => {
+interface MatchParam {
+    id: string;
+}
+
+const Title: React.FC<RouteComponentProps<MatchParam>> = ({match}) => {
+    const { scrapList } = React.useContext(MypageContext);
+    
     return <TitleContainer>
-        <STitle>어쩌구저쩌구</STitle>
+        <STitle>{scrapList[Number(match.params.id)].question}</STitle>
         <BtnContainer>
             <Button className="btn_setting">수정</Button>
             <Button className="btn_setting">삭제</Button>
@@ -13,4 +22,4 @@ const Title: React.FC = ( ) => {
     </TitleContainer>
 }
 
-export default Title; 
+export default withRouter(Title); 

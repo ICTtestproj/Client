@@ -1,20 +1,18 @@
 import * as React from 'react';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
+
+import {MypageContext} from 'packages/contexts/MypageContext';
 
 import {ContentContainer} from './style';
 
-const Content: React.FC = () => {
-    return <ContentContainer>
-        이 대한 가치를 들어 거친 인간은 위하여, 이상의 부패를 아름다우냐? 어디 충분히 천자만홍이 황금시대를 피고, 끓는다. 너의 우리 인생에 따뜻한 얼마나 방황하여도, 유소년에게서 것은 것이다. 있는 끓는 보내는 이것이다.
+interface MatchParam {
+    id: string;
+}
 
-곳이 인간에 소리다.이것은 자신과 이상은 이상의 위하여 튼튼하며, 있다. 얼음 그들은 천지는 끝까지 듣기만 희망의 칼이다.
+const Content: React.FC<RouteComponentProps<MatchParam>> = ({match}) => {
+    const {scrapList} = React.useContext(MypageContext);
 
-오직 청춘을 능히 생명을 피어나기 싶이 교향악이다. 꾸며 현저하게 그것은 위하여서, 기쁘며, 있다. 영락과 구할 따뜻한 위하여 우리 봄바람이다. 바이며, 오아이스도 인생에 사람은 천고에 용기가 것은 인생에 아니다.
-이 대한 가치를 들어 거친 인간은 위하여, 이상의 부패를 아름다우냐? 어디 충분히 천자만홍이 황금시대를 피고, 끓는다. 너의 우리 인생에 따뜻한 얼마나 방황하여도, 유소년에게서 것은 것이다. 있는 끓는 보내는 이것이다.
-
-곳이 인간에 소리다.이것은 자신과 이상은 이상의 위하여 튼튼하며, 있다. 얼음 그들은 천지는 끝까지 듣기만 희망의 칼이다.
-
-오직 청춘을 능히 생명을 피어나기 싶이 교향악이다. 꾸며 현저하게 그것은 위하여서, 기쁘며, 있다. 영락과 구할 따뜻한 위하여 우리 봄바람이다. 바이며, 오아이스도 인생에 사람은 천고에 용기가 것은 인생에 아니다.
-    </ContentContainer>
+    return <ContentContainer>{scrapList[Number(match.params.id)].answer}</ContentContainer>
 };
 
-export default Content;
+export default withRouter(Content);

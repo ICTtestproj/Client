@@ -6,6 +6,7 @@ const CheckToken: React.FC = () => {
     const { accessToken } = React.useContext(GlobalContext);
 
     React.useEffect(() => {
+        console.log(!!accessToken)
         if(!accessToken) window.location.hash = '#/signin'
     }, [accessToken]);
 

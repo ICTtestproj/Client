@@ -20,12 +20,12 @@ const ScrapContainer: React.FC = () => {
 
   React.useEffect(() => {
     const getLastAskList = async () => {
-      const response = await getMyScrap({ accessToken });
+      // const response = await getMyScrap({ accessToken });
 
-      setScrapList(response.result);
+      // setScrapList(response.result);
     };
 
-    getLastAskList();
+    // getLastAskList();
   }, []);
 
   const handleClickScrapBtn = React.useCallback(() => {

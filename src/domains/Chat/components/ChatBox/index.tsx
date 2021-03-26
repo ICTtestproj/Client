@@ -29,14 +29,10 @@ const ChatBox = (props: any) => {
 
   if (props.question) {
     style = {
-      marginLeft: '0px',
-      marginRight: '30px',
       alignItems: "flex-end"
     }
   } else {
     style = {
-      marginLeft: '30px',
-      marginRight: '0px',
       alignItems: "flex-start"
     }
   }
@@ -86,32 +82,3 @@ const ChatBox = (props: any) => {
 };
 
 export default ChatBox;
-
-  // async function registerScrap() {
-  //   try {
-  //     setError(null);
-
-  //     const data = {
-  //       question: props.item[sequence].question,
-  //       answer: props.item[sequence].answer
-  //     }
-
-  //     const formData = convertToFormData(data);
-
-  //     const response = await axios({
-  //       method: 'post',
-  //       url: 'http://137.135.116.71/regscrap',
-  //       headers: {
-  //         'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50IjoiIiwiZXhwaXJlYXQiOiIyMDIxLzEwLzAzLCAwNjozMzo1OCJ9.PAvBeeNuQTicYYtS9sbZQPODqBMSnILplU2nADLkzWA',
-  //         'Accept': '*/*',
-  //         'Content-Type': 'multipart/form-data;'
-  //       },
-  //       data: formData
-  //     });
-      
-  //     console.log('질문 : ' + props.item[sequence].question + ', 답변 : ' + props.item[sequence].answer);
-  //     console.log(response.data.result);
-  //   } catch (e) {
-  //     setError(e);
-  //   }
-  // }
