@@ -14,8 +14,8 @@ const Main: React.FC = () => {
       <BtnToChat />
       <MyInfo />
       <KeywordsContainer />
-      <FAQContainer></FAQContainer>
-      <ScrapContainer></ScrapContainer>
+      <FAQContainer />
+      <ScrapContainer />
     </div>
   );
 };

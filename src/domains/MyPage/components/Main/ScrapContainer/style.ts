@@ -53,6 +53,7 @@ export const ScrapListItem = styled.div`
     font-size: 14px;
     white-space: normal;
     height: 192px;
+    line-height: 1.55;
   }
 `;
 

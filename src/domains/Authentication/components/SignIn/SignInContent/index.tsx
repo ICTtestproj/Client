@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { signIn } from "domains/Authentication/remotes/SignInAPI";
 import { GlobalContext } from "packages/contexts/GlobalContext";
-import {validateEmail} from 'utils';
 
 import { Input, Button } from "packages/DesignSystem";
 import { SignInContentContainer } from "./style";
@@ -22,8 +21,7 @@ const SignInContent: React.FC = () => {
   enum InputsState {
     existNull = "정보를 모두 입력하세요.",
     signinFailure = "이메일 또는 비밀번호가 틀렸습니다.",
-    invalidForm = "이메일 형식이 올바르지 않습니다.",
-  }
+   }
 
   const handleChangeEmail = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,9 +69,7 @@ const SignInContent: React.FC = () => {
   );
 
   const handleClickLoginButton = React.useCallback(async () => {
-    if(!validateEmail(account)){
-      setInputState(InputsState.invalidForm);
-    } else if (account && password) {
+    if (account && password) {
       setInputState(" ");
 
       const response = await signIn({
@@ -97,7 +93,7 @@ const SignInContent: React.FC = () => {
   return (
     <SignInContentContainer>
       <Input isAct={isAccountSelected}>
-        <label htmlFor="input_email">이메일</label>
+        <label htmlFor="input_email">행번</label>
         <div>
           <input
             type="text"

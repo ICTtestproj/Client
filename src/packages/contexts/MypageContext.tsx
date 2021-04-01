@@ -3,6 +3,7 @@ import * as React from "react";
 interface ScrapListItem {
     question: string; 
     answer: string;
+    id: string;
 }
 
 interface State {
@@ -19,9 +20,7 @@ interface State {
 }
 
 const initialState: State = {
-  scrapList: [
-    {question: 'a', answer:'qwer'}
-  ],
+  scrapList: [],
   setScrapList: () => {},
   isScrapListEditMode: false,
   setIsScrapListEditMode: () => {},
@@ -36,9 +35,7 @@ const initialState: State = {
 export const MypageContext = React.createContext<State>(initialState);
 
 const MypageContextProvider: React.FC = ({ children }) => {
-  const [scrapList, setScrapList] = React.useState<ScrapListItem[]>([
-    {question: 'a', answer:'qwer'}
-  ],);
+  const [scrapList, setScrapList] = React.useState<ScrapListItem[]>([]);
   const [isScrapListEditMode, setIsScrapListEditMode] = React.useState<boolean>(false);
   const [isScrapEditMode, setIsScrapEditMode] = React.useState<boolean>(false);
   const [newScrapTitle, setNewScrapTitle] = React.useState<string>('');

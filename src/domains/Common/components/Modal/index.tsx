@@ -1,14 +1,16 @@
 import * as React from "react";
 import { ModalContainer, Contents, Overlay, Title, Close, Body, Line, Button, Array } from "./style";
 
+import {ModalContext} from 'packages/contexts/ModalContext';
+
 import {ModalProps} from '../../models/props';
 
-const Modal: React.FC<ModalProps> = ({
-    setIsAccepted,
-    title,
-    content,
-    setModalState
-}) => {
+const Modal: React.FC = () => {
+  const {setIsAccepted, isModalOpened, setIsModalOpened, title, content } = React.useContext(ModalContext);
+
+  React.useEffect(() => {
+    console.log("?")
+  }, [])
 
 //   async function registerScrap() {
 //     try {
@@ -33,16 +35,16 @@ const Modal: React.FC<ModalProps> = ({
 
   const handleAccept = React.useCallback(() => {
     setIsAccepted(true);
-    setModalState(false);
-  }, [setIsAccepted, setModalState]);
+    setIsModalOpened(false);
+  }, [setIsAccepted, setIsModalOpened]);
 
   const handleCancel = React.useCallback(() => {
     setIsAccepted(false);
-    setModalState(false);
-  }, [setIsAccepted, setModalState]);
+    setIsModalOpened(false);
+  }, [setIsAccepted, setIsModalOpened]);
 
 
-  return(
+  return( isModalOpened? 
     <ModalContainer className="colorful">
       <Overlay onClick={handleCancel} />
       <Contents>
@@ -56,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
           </Array>
         </Body>
       </Contents>
-    </ModalContainer>
+    </ModalContainer> : <> </>
     );
 };
 

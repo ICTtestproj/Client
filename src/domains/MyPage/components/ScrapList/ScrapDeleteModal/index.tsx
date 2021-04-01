@@ -13,10 +13,10 @@ const ScrapDeleteModal: React.FC<Props> = ({
 }) => {
 
     return <Modal 
-        setIsAccepted={setIsAccepted}
-        title="DELETE"
-        content="해당 스크랩을 삭제하시겠습니까?"
-        setModalState={setModalState}
+        // setIsAccepted={setIsAccepted}
+        // title="DELETE"
+        // content="해당 스크랩을 삭제하시겠습니까?"
+        // setModalState={setModalState}
         />;
 }
 

@@ -12,12 +12,12 @@ function App() {
   return (
     <HashRouter>
       <GlobalStyle />
+      <Modal />
       <Switch>
         <GlobalContextProvider>
-          <Route exact path="/signin" component={Chatting.Chat} />
+          <Route exact path="/signin" component={Authentication.SignIn} />
           <Route exact path="/signup" component={Authentication.SignUp} />
           <Route exact path="/" component={Chatting.Chat} />
-          {/* <Route exact path="/" component={Modal} /> */}
           <MypageContextProvider>
             <Route exact path="/mypage" component={Mypage.MypageMain} />
             <Route exact path="/mypage/scrap" component={Mypage.ScrapList} />

@@ -19,14 +19,14 @@ const ScrapContainer: React.FC = () => {
   const { scrapList, setScrapList } = React.useContext(MypageContext);
 
   React.useEffect(() => {
-    const getLastAskList = async () => {
-      // const response = await getMyScrap({ accessToken });
+    const getScrapList = async () => {
+      const response = await getMyScrap({ accessToken });
 
-      // setScrapList(response.result);
+      setScrapList(response.result);
     };
 
-    // getLastAskList();
-  }, []);
+    getScrapList();
+  }, [accessToken, setScrapList]);
 
   const handleClickScrapBtn = React.useCallback(() => {
     window.location.hash = "#/mypage/scrap";
@@ -42,7 +42,7 @@ const ScrapContainer: React.FC = () => {
       </TitleContainer>
       <ScrapList>
         {scrapList.length > 0? scrapList.map(i => (
-          <ScrapListItem>
+          <ScrapListItem key={i.id}>
             <h3>{i.question}</h3>
             <p>{i.answer}</p>
           </ScrapListItem>

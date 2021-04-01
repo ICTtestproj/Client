@@ -12,6 +12,8 @@ import ChatInput from "../../domains/Chat/components/ChatInput";
 import Modal from '../../domains/Chat/components/Modal';
 import {BtnToMypage} from '../../domains/MyPage/components/ScrapList';
 
+import axios from 'axios';
+
 interface ChattingListItem {
   content: string[];
   isQuestion: boolean;
@@ -51,61 +53,63 @@ const Chat: React.FC = () => {
     setWaiting(true);
     scrollToBottom();
 
-    // try {
-    //   // console.log(param.replace(' ', '%20'));
-    //   // const replaceChat = encodeURIComponent(param);
-    //   const replaceChat = param;
-    //   setError(null);
-    //   const response = await axios({
-    //     method: 'get',
-    //     url: 'http://137.135.116.71/chat',
-    //     params: {
-    //       question: replaceChat
-    //     },
-    //     headers: {
-    //       'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50IjoiIiwiZXhwaXJlYXQiOiIyMDIxLzEwLzAzLCAwNjozMzo1OCJ9.PAvBeeNuQTicYYtS9sbZQPODqBMSnILplU2nADLkzWA',
-    //       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-    //     }
-    //   });
+    
 
-    //   const resAnswer: string[] = [];
-    //   console.log('질문 : ' + param);
-    //   if (response.data.id != -1) resAnswer.push(response.data.answer);
-    //   else resAnswer.push('무슨 말인지 잘 모르겠어요!');
+    try {
+      // console.log(param.replace(' ', '%20'));
+      // const replaceChat = encodeURIComponent(param);
+      const replaceChat = param;
+      setError(null);
+      const response = await axios({
+        method: 'get',
+        url: 'http://137.135.116.71/chat',
+        params: {
+          question: replaceChat
+        },
+        headers: {
+          'Authorization': 'Bearer ' + accessToken,
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      });
 
-    //   if (response.data.id != -1 && response.data.context.prompts[0] != null && response.data.context.prompts[0].displayText != null) {
-    //     resAnswer.push(response.data.context.prompts[0].displayText);
-    //   }
+      const resAnswer: string[] = [];
+      console.log('질문 : ' + param);
+      if (response.data.id != -1) resAnswer.push(response.data.answer);
+      else resAnswer.push('무슨 말인지 잘 모르겠어요!');
 
-    //   setAnswer(resAnswer);
-    //   console.log('답변 : ' + answer);
+      if (response.data.id != -1 && response.data.context.prompts[0] != null && response.data.context.prompts[0].displayText != null) {
+        resAnswer.push(response.data.context.prompts[0].displayText);
+      }
 
-    //   let ans = {
-    //     content: resAnswer,
-    //     isQuestion: false,
-    //     index: count
-    //   }
+      setAnswer(resAnswer);
+      console.log('답변 : ' + answer);
 
-    //   setChatting([...chatting, ans]);
+      let ans = {
+        content: resAnswer,
+        isQuestion: false,
+        index: count
+      }
 
-    //   scrollToBottom();
-    //   setWaiting(false);
+      setChatting([...chatting, ans]);
 
-    //   let tempScrap = {
-    //     index: count,
-    //     question: param,
-    //     answer: resAnswer[0]
-    //   }
+      scrollToBottom();
+      setWaiting(false);
 
-    //   const scrapList = scrap;
-    //   scrapList.push(tempScrap);
-    //   setScrap(scrapList);
-    //   console.log(count);
-    //   setCount(count + 1);
-    // } catch (e) {
-    //   setError(e);
-    //   setWaiting(false);
-    // }
+      let tempScrap = {
+        index: count,
+        question: param,
+        answer: resAnswer[0]
+      }
+
+      const scrapList = scrap;
+      scrapList.push(tempScrap);
+      setScrap(scrapList);
+      console.log(count);
+      setCount(count + 1);
+    } catch (e) {
+      setError(e);
+      setWaiting(false);
+    }
   }
 
   // ----- 질문하기 -----
@@ -121,7 +125,7 @@ const Chat: React.FC = () => {
       setQuestion(chat);
       const tempChatting = chatting;
       tempChatting.push(question);
-      setChatting(tempChatting); // sync로 처리를 해봐라.
+      setChatting(tempChatting);
       scrollToBottom();
       getResponse(chat);
     } else {

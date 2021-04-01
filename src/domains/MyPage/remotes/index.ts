@@ -2,19 +2,42 @@ import { instance } from "packages/modules/axios";
 
 import { authorization } from "utils";
 import {
+  GetMyNameParams,
+  GetMyNamePayload,
   GetMyScrapParams,
   GetMyScrapPayload,
   GetLastAskParams,
   GetLastAskPayload,
   GetOftenAskedParams,
-  GetOftenAskedPaylaod
+  GetOftenAskedPayload,
+  DeleteScrapParams,
+  DeleteScrapPayload
 } from "../models/api";
 
 const url = {
+  getMyname: '/getname',
   getMyScrap: "/myscrap",
   getLastAsk: "/lastask",
-  getOftenAsked: "oftenasked"
+  getOftenAsked: "/oftenasked",
+  deleteScrap: "/delscrap"
 };
+
+export const getMyName = async (params: GetMyNameParams) => {
+  try {
+    const { data } = await instance.get<GetMyNamePayload>(url.getMyname, {
+      headers: authorization(params.accessToken)
+    });
+
+    return {
+      result: data.result.toString()
+    };
+  } catch (e) {
+    return {
+      result: ''
+    };
+  }
+};
+
 
 export const getMyScrap = async (params: GetMyScrapParams) => {
   try {
@@ -48,7 +71,7 @@ export const getLastAsk = async (params: GetLastAskParams) => {
 
 export const getOftenAsked = async (params: GetOftenAskedParams) => {
   try {
-    const { data } = await instance.get<GetOftenAskedPaylaod>(
+    const { data } = await instance.get<GetOftenAskedPayload>(
       url.getOftenAsked,
       {
         headers: authorization(params.accessToken)
@@ -64,3 +87,23 @@ export const getOftenAsked = async (params: GetOftenAskedParams) => {
     };
   }
 };
+
+export const deleteScrap = async (params: DeleteScrapParams) => {
+  try {
+    const { data } = await instance.get<DeleteScrapPayload>(
+      url.deleteScrap,
+      {
+        headers: authorization(params.accessToken),
+        params
+      }
+    );
+
+    return data;
+  } catch (e) {
+
+    return {
+      result: false
+    };
+  }
+};
+

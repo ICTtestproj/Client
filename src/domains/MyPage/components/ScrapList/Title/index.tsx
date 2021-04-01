@@ -14,7 +14,7 @@ const Title: React.FC = () => {
 
     return <TitleContainer>
         <STitle>나의 스크랩</STitle>
-        <Button className="btn_setting"  onClick={handleClickSetting}>{isScrapListEditMode? '완료' : '삭제'}</Button>
+        {/* <Button className="btn_setting"  onClick={handleClickSetting}>{isScrapListEditMode? '완료' : '삭제'}</Button> */}
     </TitleContainer>
 }
 

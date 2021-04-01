@@ -5,10 +5,13 @@ import STitle from "packages/DesignSystem/Title"
 import { setConstantValue } from "typescript";
 import {convertToFormData} from 'utils/index';
 import axios from 'axios';
+import {GlobalContext} from 'packages/contexts/GlobalContext';
 
 
 const Modal = (props : any) => {
   const { visible, closeModal } = props;
+
+  const {accessToken} = React.useContext(GlobalContext)
 
   const [error, setError] = React.useState(false);
   const [modalState, setModalState] = React.useState(false);
@@ -17,7 +20,7 @@ const Modal = (props : any) => {
 
   async function registerScrap() {
     console.log(props.keyIndex);
-    // console.log('질문 : ' + props.item[sequence].question + ', 답변 : ' + props.item[sequence].answer);
+    
     try {
       setError(false);
 
@@ -32,7 +35,7 @@ const Modal = (props : any) => {
         method: 'post',
         url: 'http://137.135.116.71/regscrap',
         headers: {
-          'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50IjoiIiwiZXhwaXJlYXQiOiIyMDIxLzEwLzAzLCAwNjozMzo1OCJ9.PAvBeeNuQTicYYtS9sbZQPODqBMSnILplU2nADLkzWA',
+          'Authorization': 'Bearer ' + accessToken,
           'Accept': '*/*',
           'Content-Type': 'multipart/form-data;'
         },

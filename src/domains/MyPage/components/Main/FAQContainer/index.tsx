@@ -14,7 +14,8 @@ const FAQContainer: React.FC = () => {
     const getLastAskList = async () => {
       const response = await getOftenAsked({ accessToken });
 
-      setOftenAskedList(response.result.map(i => i.question));
+      console.log(response)
+      // setOftenAskedList(response.result.map(i => i.question));
     };
 
     getLastAskList();
