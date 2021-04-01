@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { PersonalInfoInputsProps } from "../../../../models/props";
+import { PersonalInfoInputsProps } from "domains/Authentication/models/props";
 
-import { Input } from "../../../../../../packages/DesignSystem";
+import { Input } from "packages/DesignSystem";
 import { InputsContainer } from "./style";
 
 const PersonalInfoInputs: React.FC<PersonalInfoInputsProps> = ({

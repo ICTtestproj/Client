@@ -4,7 +4,7 @@ import {
   Title,
   SignInContent,
   SubOptions,
-} from "../../../domains/Authentication/components/SignIn";
+} from "domains/Authentication/components/SignIn";
 
 const SignIn: React.FC = () => {
   return (

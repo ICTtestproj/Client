@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ChatInputContainer = styled.div`
-  width: 99.88%;
+  width: 100%;
   height: 60px;
   background: white;
   display: flex;
@@ -11,6 +11,7 @@ export const ChatInputContainer = styled.div`
   align-items: center;
   bottom: 0;
   position: fixed;
+  left: 0;
 
   > input {
     width: 100%;

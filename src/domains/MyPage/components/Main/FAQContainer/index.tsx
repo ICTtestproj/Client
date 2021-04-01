@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { getOftenAsked } from "../../../remotes";
-import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
+import { getOftenAsked } from "domains/MyPage/remotes";
+import { GlobalContext } from "packages/contexts/GlobalContext";
 
 import SubTitle from "../SubTitle";
-import { FAQList, FAQListItem } from "./style";
+import { FAQListContainer, FAQList, FAQListItem,Notification } from "./style";
 
 const FAQContainer: React.FC = () => {
   const [oftenAskedList, setOftenAskedList] = React.useState<string[]>([]);
@@ -21,14 +21,18 @@ const FAQContainer: React.FC = () => {
   }, []);
 
   return (
-    <FAQList>
+    <FAQListContainer>
       <SubTitle>자주 묻는 질문</SubTitle>
-      <ul>
-        {oftenAskedList.map(i => (
+      <FAQList>
+        {
+          oftenAskedList.length > 0? 
+          
+        oftenAskedList.map(i => (
           <FAQListItem>{i}</FAQListItem>
-        ))}
-      </ul>
-    </FAQList>
+        )) : <Notification>정보가 존재하지 않습니다.</Notification>
+        }
+      </FAQList>
+    </FAQListContainer>
   );
 };
 

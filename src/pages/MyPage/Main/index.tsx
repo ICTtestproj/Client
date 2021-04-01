@@ -6,7 +6,7 @@ import {
   KeywordsContainer,
   MyInfo,
   ScrapContainer
-} from "../../../domains/MyPage/components/Main";
+} from "domains/MyPage/components/Main";
 
 const Main: React.FC = () => {
   return (

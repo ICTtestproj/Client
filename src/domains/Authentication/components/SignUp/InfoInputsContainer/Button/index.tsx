@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { SignUpButtonProps } from "../../../../models/props";
-import { signUp } from "../../../../remotes/SignUpAPI";
+import { SignUpButtonProps } from "domains/Authentication/models/props";
+import { signUp } from "domains/Authentication/remotes/SignUpAPI";
 
-import { Button as SButton } from "../../../../../../packages/DesignSystem";
+import { Button as SButton } from "packages/DesignSystem";
 import { ButtonContainer } from "./style";
 
 const Button: React.FC<SignUpButtonProps> = ({

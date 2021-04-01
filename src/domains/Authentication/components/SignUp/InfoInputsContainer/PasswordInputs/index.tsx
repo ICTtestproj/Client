@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { PasswordInputsProps } from "../../../../models/props";
+import { PasswordInputsProps } from "domains/Authentication/models/props";
 
-import { Input } from "../../../../../../packages/DesignSystem";
+import { Input } from "packages/DesignSystem";
 import { InputsContainer } from "./style";
 
 const PasswordInputs: React.FC<PasswordInputsProps> = ({

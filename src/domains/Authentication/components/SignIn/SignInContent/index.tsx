@@ -1,9 +1,11 @@
 import * as React from "react";
 
-import { Input, Button } from "../../../../../packages/DesignSystem";
+import { signIn } from "domains/Authentication/remotes/SignInAPI";
+import { GlobalContext } from "packages/contexts/GlobalContext";
+import {validateEmail} from 'utils';
+
+import { Input, Button } from "packages/DesignSystem";
 import { SignInContentContainer } from "./style";
-import { signIn } from "../../../remotes/SignInAPI";
-import { GlobalContext } from "../../../../../packages/contexts/GlobalContext";
 
 const SignInContent: React.FC = () => {
   const [account, setAccount] = React.useState<string>("");
@@ -15,11 +17,12 @@ const SignInContent: React.FC = () => {
     false
   );
   const [inputState, setInputState] = React.useState<string>(" ");
-  const { setAccessToken, accessToken } = React.useContext(GlobalContext);
+  const { setAccessToken } = React.useContext(GlobalContext);
 
   enum InputsState {
     existNull = "정보를 모두 입력하세요.",
-    signinFailure = "이메일 또는 비밀번호가 틀렸습니다."
+    signinFailure = "이메일 또는 비밀번호가 틀렸습니다.",
+    invalidForm = "이메일 형식이 올바르지 않습니다.",
   }
 
   const handleChangeEmail = React.useCallback(
@@ -68,7 +71,9 @@ const SignInContent: React.FC = () => {
   );
 
   const handleClickLoginButton = React.useCallback(async () => {
-    if (account && password) {
+    if(!validateEmail(account)){
+      setInputState(InputsState.invalidForm);
+    } else if (account && password) {
       setInputState(" ");
 
       const response = await signIn({
@@ -108,7 +113,7 @@ const SignInContent: React.FC = () => {
         <label htmlFor="input_password">비밀번호</label>
         <div>
           <input
-            type="text"
+            type="password"
             id="input_password"
             value={password}
             onFocus={e => handleFocusInInput(e)}
