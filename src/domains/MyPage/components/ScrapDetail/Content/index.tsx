@@ -12,7 +12,7 @@ interface MatchParam {
 const Content: React.FC<RouteComponentProps<MatchParam>> = ({match}) => {
     const {scrapList} = React.useContext(MypageContext);
 
-    return <ContentContainer>{scrapList[Number(match.params.id)].answer}</ContentContainer>
+    return <ContentContainer>{scrapList.filter(i => i.id === match.params.id)[0]?.answer}</ContentContainer>
 };
 
 export default withRouter(Content);

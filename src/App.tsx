@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import GlobalContextProvider from "./packages/contexts/GlobalContext";
 import MypageContextProvider from "./packages/contexts/MypageContext";
+import ModalContextProvider from 'packages/contexts/ModalContext';
 import GlobalStyle from "./packages/styles/GlobalStyle";
 import { Authentication, Mypage, Chatting } from "./pages";
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <HashRouter>
       <GlobalStyle />
+      <ModalContextProvider>
       <Modal />
       <Switch>
         <GlobalContextProvider>
@@ -26,6 +28,7 @@ function App() {
           <Authentication.CheckToken />
         </GlobalContextProvider>
       </Switch>
+      </ModalContextProvider>
     </HashRouter>
   );
 }

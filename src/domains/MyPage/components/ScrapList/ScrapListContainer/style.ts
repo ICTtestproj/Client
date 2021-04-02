@@ -15,6 +15,12 @@ export const ListContainer = styled.ul`
   &::-webkit-scrollbar-thumb{
     background: rgba(255,255,255, 0.1);
   } 
+
+  > p {
+    color :white;
+    font-weight: 300;
+    text-align: center;
+  }
 `;
 
 export const ListItem = styled.li`

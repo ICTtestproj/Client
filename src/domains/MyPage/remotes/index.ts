@@ -89,12 +89,14 @@ export const getOftenAsked = async (params: GetOftenAskedParams) => {
 };
 
 export const deleteScrap = async (params: DeleteScrapParams) => {
+  console.log(params)
   try {
-    const { data } = await instance.get<DeleteScrapPayload>(
-      url.deleteScrap,
-      {
+    const { data } = await instance.delete<DeleteScrapPayload>(
+      url.deleteScrap, {
         headers: authorization(params.accessToken),
-        params
+        params: {
+          id: params.id
+        }
       }
     );
 

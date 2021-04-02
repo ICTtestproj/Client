@@ -79,7 +79,6 @@ const SignInContent: React.FC = () => {
 
       if (response.access_token) {
         setAccessToken(response.access_token);
-        console.log(response.access_token);
 
         window.location.hash = "#/";
       } else {
@@ -88,7 +87,7 @@ const SignInContent: React.FC = () => {
     } else {
       setInputState(InputsState.existNull);
     }
-  }, [account, password, setAccessToken]);
+  }, [account, password, setAccessToken, setInputState, InputsState]);
 
   return (
     <SignInContentContainer>

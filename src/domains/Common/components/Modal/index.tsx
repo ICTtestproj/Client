@@ -8,10 +8,6 @@ import {ModalProps} from '../../models/props';
 const Modal: React.FC = () => {
   const {setIsAccepted, isModalOpened, setIsModalOpened, title, content } = React.useContext(ModalContext);
 
-  React.useEffect(() => {
-    console.log("?")
-  }, [])
-
 //   async function registerScrap() {
 //     try {
 //       const data = {
@@ -42,7 +38,6 @@ const Modal: React.FC = () => {
     setIsAccepted(false);
     setIsModalOpened(false);
   }, [setIsAccepted, setIsModalOpened]);
-
 
   return( isModalOpened? 
     <ModalContainer className="colorful">

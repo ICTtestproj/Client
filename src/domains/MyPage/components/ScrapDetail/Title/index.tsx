@@ -8,6 +8,7 @@ import { deleteScrap } from 'domains/MyPage/remotes';
 
 import {STitle, TitleContainer, BtnContainer} from './style';
 import {Button} from 'packages/DesignSystem';
+import Modal from 'domains/Common/components/Modal';
 
 interface MatchParam {
     id: string;
@@ -15,8 +16,8 @@ interface MatchParam {
 
 const Title: React.FC<RouteComponentProps<MatchParam>> = ({match}) => {
     const { accessToken } = React.useContext(GlobalContext);
-    const { scrapList } = React.useContext(MypageContext);
-    const { setContent, setIsModalOpened, setTitle, isAccepted } = React.useContext(ModalContext);
+    const { scrapList, setScrapList } = React.useContext(MypageContext);
+    const { setContent, setIsModalOpened, setTitle, isAccepted, setIsAccepted } = React.useContext(ModalContext);
     const [selectedId, setSelectedId] = React.useState<string>('');
 
     const handleClickDelete = React.useCallback(() => {
@@ -25,32 +26,35 @@ const Title: React.FC<RouteComponentProps<MatchParam>> = ({match}) => {
         setIsModalOpened(true);
     }, [setTitle, setContent, setIsModalOpened]);
 
-    
-
-
     React.useEffect(() => {
         const deleteOneScrap = async () => {
             const response = await deleteScrap({
                 accessToken,
-                id: selectedId
+                id: match.params.id
             });
 
             return response.result;
         }
-
         if(isAccepted) {
+            setSelectedId(match.params.id);
+            console.log(selectedId);
             deleteOneScrap();
             setSelectedId("");
+            setIsAccepted(false);
+            setScrapList(scrapList.filter(i => i.id !== match.params.id));
+            window.location.hash = "#/mypage/scrap";
         }
-    }, [isAccepted, accessToken, selectedId]);
+    }, [isAccepted, accessToken, selectedId, match, setIsAccepted, setScrapList, scrapList]);
 
-    return <TitleContainer>
-        <STitle>{scrapList[Number(match.params.id)].question}</STitle>
-        <BtnContainer>
-            {/* <Button className="btn_setting">수정</Button> */}
-            <Button className="btn_setting" onClick={handleClickDelete}>삭제</Button>
-        </BtnContainer>
-    </TitleContainer>
+    return <> 
+        <TitleContainer>
+            <STitle>{scrapList.filter(i => i.id === match.params.id)[0]?.question}</STitle>
+            <BtnContainer>
+                <Button className="btn_setting" onClick={handleClickDelete}>삭제</Button>
+            </BtnContainer>
+        </TitleContainer>
+        <Modal />
+    </>
 }
 
 export default withRouter(Title); 
