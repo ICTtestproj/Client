@@ -22,20 +22,25 @@ export const KeywordList = styled.ul`
 `;
 
 export const KeywordItem = styled.li`
+  width: 200px;
   height: 40px;
   font-size: 15px;
   color: #ffffff;
   text-align: center;
   font-weight: 300;
-  padding: 0 15px;
-  display: inline-flex;
+  padding: 10px 15px;
+  display: inline-block;
   align-items: center;
   margin-right: 20px;
   border-radius: 15px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
 `;
 
 export const Notification = styled.li`

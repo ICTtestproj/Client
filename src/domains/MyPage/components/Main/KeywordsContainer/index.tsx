@@ -18,7 +18,8 @@ const KeywordsContainer: React.FC = () => {
     };
 
     getLastAskList();
-  }, []);
+
+  }, [accessToken]);
 
   return (
     <KeywordsListContainer>

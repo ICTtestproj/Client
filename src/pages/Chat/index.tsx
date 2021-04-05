@@ -28,7 +28,7 @@ interface scrapItem {
 
 const Chat: React.FC = () => {
   let introduce = {
-    content: ['안녕하세요. 저는 LEGO 챗봇입니다. 질문을 마음껏 입력해주세요.'],
+    content: ['안녕하세요. LEGO 챗봇에게 무엇이든 물어보세요!'],
     isQuestion: false,
     index: -1
   }

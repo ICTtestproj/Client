@@ -14,12 +14,11 @@ const FAQContainer: React.FC = () => {
     const getLastAskList = async () => {
       const response = await getOftenAsked({ accessToken });
 
-      console.log(response)
-      // setOftenAskedList(response.result.map(i => i.question));
+      setOftenAskedList(response.result.map(i => i.question).slice(0, 2));
     };
 
     getLastAskList();
-  }, []);
+  }, [accessToken]);
 
   return (
     <FAQListContainer>

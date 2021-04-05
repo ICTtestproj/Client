@@ -9,6 +9,7 @@ export const FAQList = styled.ul`
 `;
 
 export const FAQListItem = styled.li`
+  width: 385px;
   height: 35px;
   border-radius: 15px;
   -webkit-backdrop-filter: blur(30px);
@@ -17,11 +18,15 @@ export const FAQListItem = styled.li`
   background-color: rgba(255,255,255,0.25);
   font-weight: 300;
   font-size: 15px;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-  margin-top: 15px;
+  display: inline-block ;
+  align-items: center;  
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  padding: 10px 15px;
 `;
 
 export const Notification = styled.li`
