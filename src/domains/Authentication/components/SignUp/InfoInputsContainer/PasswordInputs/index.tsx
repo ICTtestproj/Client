@@ -17,20 +17,28 @@ const PasswordInputs: React.FC<PasswordInputsProps> = ({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setPassword(e.target.value);
     },
-    []
+    [setPassword]
   );
   const handleChangeRePassword = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setRePassword(e.target.value);
+      
+    },
+    [setRePassword,]
+  );
 
-      if (password !== rePassword) {
+  React.useEffect(() => {
+      
+      console.log(password, rePassword)
+
+      if(!!!(password &&  rePassword)) {
+        setIsPasswordChecked(false)
+      } else if (password !== rePassword) {
         setIsPasswordChecked(false);
       } else {
         setIsPasswordChecked(true);
       }
-    },
-    []
-  );
+  }, [setRePassword, setIsPasswordChecked, password, rePassword]);
 
   return (
     <InputsContainer>

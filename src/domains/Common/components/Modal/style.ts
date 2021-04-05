@@ -10,15 +10,15 @@ const ModalContainer = styled.div`
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
 `;
 
 const Overlay = styled.div`
   position: absolute;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
+  left: 0;
 `;
 
 const Contents = styled.div`
@@ -32,6 +32,7 @@ const Contents = styled.div`
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
   color: #c0b1cd;
+  
 `;
 
 const Array = styled.div`
